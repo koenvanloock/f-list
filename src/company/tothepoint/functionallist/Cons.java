@@ -1,5 +1,7 @@
 package company.tothepoint.functionallist;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -71,6 +73,25 @@ public class Cons<T> implements FList<T> {
 
     @Override
     public String toString() {
-        return "Cons(" + head + ',' + tail + ')';
+        return "[ " + head + tail.stringify(false) ;
+    }
+
+    public String stringify(boolean first) {
+        return first
+                ? head + ", " + tail.stringify(false)
+                : ", " + head + tail.stringify(false);
+    }
+
+    @Override
+    public List<T> toList() {
+        return this.foldLeft(new ArrayList<>(), (elem, acc) -> {
+            acc.add(elem);
+            return acc;
+        });
+    }
+
+    @Override
+    public T[] toArray() {
+        return (T[]) this.toList().toArray();
     }
 }

@@ -1,5 +1,6 @@
 package company.tothepoint.functionallist;
 
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -22,4 +23,10 @@ public interface FList<T> {
     boolean equals(Object other);
 
     FList<T> reverse();
+
+    String stringify(boolean first);
+
+    List<T> toList();
+
+    T[] toArray();
 }

@@ -1,5 +1,7 @@
 package company.tothepoint.functionallist;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -59,6 +61,20 @@ public class Nil<T> implements FList<T> {
 
     @Override
     public String toString() {
-        return "Nil";
+        return "[]";
+    }
+
+    public String stringify(boolean first) {
+        return first ? "[]" : " ]";
+    }
+
+    @Override
+    public List<T> toList() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public T[] toArray() {
+        return (T[]) new Object[0];
     }
 }
